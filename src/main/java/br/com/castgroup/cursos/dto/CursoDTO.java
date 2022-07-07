@@ -1,8 +1,8 @@
 package br.com.castgroup.cursos.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import br.com.castgroup.cursos.entities.Categoria;
 import br.com.castgroup.cursos.entities.Curso;
 
 public class CursoDTO {
@@ -76,6 +76,8 @@ public class CursoDTO {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+
 	
 	
 	

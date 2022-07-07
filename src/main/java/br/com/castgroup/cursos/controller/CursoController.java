@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -31,9 +32,6 @@ public class CursoController {
 	@Autowired
 	CursoRepository repository;
 
-
-	// @ApiOperation("Serviço para Cadastrar")
-	// @CrossOrigin
 	// Metodo de Post
 	@PostMapping
 	public ResponseEntity<String> insert(@RequestBody CursoForm form) {
@@ -41,14 +39,11 @@ public class CursoController {
 			Curso curso = new Curso();
 
 			if (form.getDataInicio().isBefore(LocalDate.now())) {
-				return ResponseEntity.status(HttpStatus.OK).body("Data Menor que data Atual");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data Menor que a atual");
 
 			} else {
-				curso.setDescricao(form.getDescricao());
-				curso.setDataInicio(form.getDataInicio());
-				curso.setDataTermino(form.getDataTermino());
-				curso.setQtdAlunos(form.getQtdAlunos());
-				curso.setCategoria(form.getCategoria());
+//				
+				BeanUtils.copyProperties(form, curso);
 				repository.save(curso);
 
 			}
@@ -60,10 +55,7 @@ public class CursoController {
 		}
 
 	}
-	
-	
-	// @ApiOperation("Serviço para Buscar cursos")
-	// @CrossOrigin
+
 	// Metodo de Get
 	@GetMapping
 	public ResponseEntity<List<CursoDTO>> search() {
@@ -72,14 +64,15 @@ public class CursoController {
 
 		for (Curso curso : repository.findAll()) {
 			CursoDTO item = new CursoDTO();
-
-			item.setIdCurso(curso.getIdCurso());
-			item.setDescricao(curso.getDescricao());
-			item.setDataInicio(curso.getDataInicio());
-			item.setDataTermino(curso.getDataTermino());
-			item.setQtdAlunos(curso.getQtdAlunos());
+//
+//			item.setIdCurso(curso.getIdCurso());
+//			item.setDescricao(curso.getDescricao());
+//			item.setDataInicio(curso.getDataInicio());
+//			item.setDataTermino(curso.getDataTermino());
+//			item.setQtdAlunos(curso.getQtdAlunos());
+			
 			item.setCategoria(curso.getCategoria().getCategoria());
-
+			BeanUtils.copyProperties(curso, item);
 			list.add(item);
 		}
 
@@ -87,29 +80,32 @@ public class CursoController {
 
 	}
 
-	// @ApiOperation("Serviço para Deletar")
+	
 	// Metodo de deletar
-	// @CrossOrigin
 	@DeleteMapping(value = "delete/{idCurso}")
 	public ResponseEntity<String> delete(@PathVariable("idCurso") Integer idCurso) {
 		try {
 			Optional<Curso> item = repository.findById(idCurso);
 
 			if (item.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Curso não encontrado");
-			} else {
-				Curso curso = item.get();
-				repository.delete(curso);
-				return ResponseEntity.status(HttpStatus.OK).body("Curso excluido");
-
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado");
 			}
+
+			Curso curso = item.get();
+
+			if (curso.getDataTermino().isBefore(LocalDate.now())) {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data menor que a data atual");
+			}
+			
+			repository.delete(curso);
+			return ResponseEntity.status(HttpStatus.OK).body("Curso excluido");
+
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro :" + e.getMessage());
 		}
 
 	}
 
-	
 	// Metodo de get por id
 	@GetMapping("/{idCurso}")
 	public ResponseEntity<CursoDTO> listarId(@PathVariable("idCurso") Integer idCurso) {
@@ -119,18 +115,19 @@ public class CursoController {
 		if (list.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		} else {
-			CursoDTO get = new CursoDTO();
+			CursoDTO item = new CursoDTO();
 
 			Curso curso = list.get();
 
-			get.setIdCurso(curso.getIdCurso());
-			get.setDescricao(curso.getDescricao());
-			get.setDataInicio(curso.getDataInicio());
-			get.setDataTermino(curso.getDataTermino());
-			get.setQtdAlunos(curso.getQtdAlunos());
-			get.setCategoria(curso.getCategoria().getCategoria());
+//			get.setIdCurso(curso.getIdCurso());
+//			get.setDescricao(curso.getDescricao());
+//			get.setDataInicio(curso.getDataInicio());
+//			get.setDataTermino(curso.getDataTermino());
+//			get.setQtdAlunos(curso.getQtdAlunos());
+			item.setCategoria(curso.getCategoria().getCategoria());
+			BeanUtils.copyProperties(curso, item);
 
-			return ResponseEntity.status(HttpStatus.OK).body(get);
+			return ResponseEntity.status(HttpStatus.OK).body(item);
 
 		}
 
@@ -150,12 +147,14 @@ public class CursoController {
 			CursoDTO dto = new CursoDTO();
 
 			for (Curso curso : repository.findByDescricao(descricao)) {
-				dto.setIdCurso(curso.getIdCurso());
-				dto.setDescricao(curso.getDescricao());
-				dto.setDataInicio(curso.getDataInicio());
-				dto.setDataTermino(curso.getDataTermino());
-				dto.setQtdAlunos(curso.getQtdAlunos());
+//				dto.setIdCurso(curso.getIdCurso());
+//				dto.setDescricao(curso.getDescricao());
+//				dto.setDataInicio(curso.getDataInicio());
+//				dto.setDataTermino(curso.getDataTermino());
+//				dto.setQtdAlunos(curso.getQtdAlunos());
+//				dto.setCategoria(curso.getCategoria().getCategoria());
 				dto.setCategoria(curso.getCategoria().getCategoria());
+				BeanUtils.copyProperties(curso, dto);
 				response.add(dto);
 
 			}
@@ -166,7 +165,6 @@ public class CursoController {
 
 	}
 
-	
 	// Metodo de busca pelo intervalo de datas
 	@GetMapping(value = "/periodo/{dataInicio}/{dataTermino}")
 	public ResponseEntity<?> listarData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicio,
@@ -179,16 +177,17 @@ public class CursoController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não achado");
 
 		} else {
-			CursoDTO dto = new CursoDTO();
+			CursoDTO cursoDto = new CursoDTO();
 
 			for (Curso curso : repository.findByDataInicioBetween(dataInicio, dataTermino)) {
-				dto.setIdCurso(curso.getIdCurso());
-				dto.setDescricao(curso.getDescricao());
-				dto.setDataInicio(curso.getDataInicio());
-				dto.setDataTermino(curso.getDataTermino());
-				dto.setQtdAlunos(curso.getQtdAlunos());
-				dto.setCategoria(curso.getCategoria().getCategoria());
-				response.add(dto);
+//				cursoDto.setIdCurso(curso.getIdCurso());
+//				cursoDto.setDescricao(curso.getDescricao());
+//				cursoDto.setDataInicio(curso.getDataInicio());
+//				cursoDto.setDataTermino(curso.getDataTermino());
+//				cursoDto.setQtdAlunos(curso.getQtdAlunos());
+//				cursoDto.setCategoria(curso.getCategoria().getCategoria());
+				BeanUtils.copyProperties(curso, cursoDto);
+				response.add(cursoDto);
 
 			}
 
@@ -198,26 +197,24 @@ public class CursoController {
 
 	}
 
-	
-	// @ApiOperation("Serviço para Atualizar")
-	// @CrossOrigin
 	// Metodo de Editar
 	@PutMapping
-	public ResponseEntity<String> update(@RequestBody AtualizacaoCursoForm request) {
+	public ResponseEntity<String> update(@RequestBody AtualizacaoCursoForm form) {
 		try {
-			Optional<Curso> item = repository.findById(request.getIdCurso());
+			Optional<Curso> item = repository.findById(form.getIdCurso());
 
 			if (item.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Curso não encontrado");
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado");
 			} else {
 				Curso curso = item.get();
 
-				curso.setDescricao(request.getDescricao());
-				curso.setDataInicio(request.getDataInicio());
-				curso.setDataTermino(request.getDataTermino());
-				curso.setQtdAlunos(request.getQtdAlunos());
-				curso.setCategoria(request.getCategoria());
-
+//				curso.setDescricao(form.getDescricao());
+//				curso.setDataInicio(form.getDataInicio());
+//				curso.setDataTermino(form.getDataTermino());
+//				curso.setQtdAlunos(form.getQtdAlunos());
+//				curso.setCategoria(form.getCategoria());
+				
+				BeanUtils.copyProperties(form, curso);
 				repository.save(curso);
 
 				return ResponseEntity.status(HttpStatus.OK).body("Curso Editado");
