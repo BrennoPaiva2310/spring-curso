@@ -31,26 +31,27 @@ public class CursoController {
 	@Autowired
 	CursoRepository repository;
 
-	// private static final String ENDPOINT = "api/medico";
 
 	// @ApiOperation("Serviço para Cadastrar")
-	// @RequestMapping(value = ENDPOINT, method = RequestMethod.POST)
-
 	// @CrossOrigin
-
 	// Metodo de Post
 	@PostMapping
 	public ResponseEntity<String> insert(@RequestBody CursoForm form) {
 		try {
 			Curso curso = new Curso();
 
-			curso.setDescricao(form.getDescricao());
-			curso.setDataInicio(form.getDataInicio());
-			curso.setDataTermino(form.getDataTermino());
-			curso.setQtdAlunos(form.getQtdAlunos());
-			curso.setCategoria(form.getCategoria());
+			if (form.getDataInicio().isBefore(LocalDate.now())) {
+				return ResponseEntity.status(HttpStatus.OK).body("Data Menor que data Atual");
 
-			repository.save(curso);
+			} else {
+				curso.setDescricao(form.getDescricao());
+				curso.setDataInicio(form.getDataInicio());
+				curso.setDataTermino(form.getDataTermino());
+				curso.setQtdAlunos(form.getQtdAlunos());
+				curso.setCategoria(form.getCategoria());
+				repository.save(curso);
+
+			}
 
 			return ResponseEntity.status(HttpStatus.OK).body("Curso cadastrado com sucesso");
 
@@ -59,9 +60,9 @@ public class CursoController {
 		}
 
 	}
+	
+	
 	// @ApiOperation("Serviço para Buscar cursos")
-	// @RequestMapping(value = ENDPOINT, method = RequestMethod.GET)
-
 	// @CrossOrigin
 	// Metodo de Get
 	@GetMapping
@@ -87,10 +88,9 @@ public class CursoController {
 	}
 
 	// @ApiOperation("Serviço para Deletar")
-
 	// Metodo de deletar
-	@DeleteMapping(value = "/{idCurso}")
 	// @CrossOrigin
+	@DeleteMapping(value = "delete/{idCurso}")
 	public ResponseEntity<String> delete(@PathVariable("idCurso") Integer idCurso) {
 		try {
 			Optional<Curso> item = repository.findById(idCurso);
@@ -109,6 +109,7 @@ public class CursoController {
 
 	}
 
+	
 	// Metodo de get por id
 	@GetMapping("/{idCurso}")
 	public ResponseEntity<CursoDTO> listarId(@PathVariable("idCurso") Integer idCurso) {
@@ -135,7 +136,7 @@ public class CursoController {
 
 	}
 
-
+	// Metodo de busca por descrição
 	@GetMapping("/descricao/{descricao}")
 	public ResponseEntity<?> listarId(@PathVariable("descricao") String descricao) {
 
@@ -164,10 +165,12 @@ public class CursoController {
 		}
 
 	}
+
 	
+	// Metodo de busca pelo intervalo de datas
 	@GetMapping(value = "/periodo/{dataInicio}/{dataTermino}")
-	public ResponseEntity<?> listarData(@PathVariable @DateTimeFormat(pattern="yyyy-MM-dd")  LocalDate dataInicio ,
-			@PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dataTermino) {
+	public ResponseEntity<?> listarData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicio,
+			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataTermino) {
 
 		List<Curso> list = repository.findByDataInicioBetween(dataInicio, dataTermino);
 		List<CursoDTO> response = new ArrayList<>();
@@ -195,17 +198,8 @@ public class CursoController {
 
 	}
 
-//	@GetMapping(value = "/periodo/{dataInicio}/{dataTermino}")
-//	public ResponseEntity<List<Curso>> findByDataInicio(@PathVariable @DateTimeFormat(pattern="yyyy-MM-dd")  LocalDate dataInicio ,@PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dataTermino) {
-//
-//		List<Curso> response = repository.findByDataInicioBetween(dataTermino, dataInicio);
-//
-//		return ResponseEntity.status(HttpStatus.OK).body(response);
-//	
-//	}
-
+	
 	// @ApiOperation("Serviço para Atualizar")
-
 	// @CrossOrigin
 	// Metodo de Editar
 	@PutMapping
