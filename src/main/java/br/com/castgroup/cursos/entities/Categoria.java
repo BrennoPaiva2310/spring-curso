@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_categorias")
 public class Categoria {
@@ -17,8 +19,9 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCategoria;
-	private String categorias;
+	private String categoria;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoria")
 	private List<Curso> curso = new ArrayList<>();
 
@@ -26,10 +29,10 @@ public class Categoria {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Categoria(Integer idCategoria, String categorias, List<Curso> curso) {
+	public Categoria(Integer idCategoria, String categoria, List<Curso> curso) {
 		super();
 		this.idCategoria = idCategoria;
-		this.categorias = categorias;
+		this.categoria = categoria;
 		this.curso = curso;
 	}
 
@@ -41,12 +44,12 @@ public class Categoria {
 		this.idCategoria = idCategoria;
 	}
 
-	public String getCategorias() {
-		return categorias;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCategorias(String categorias) {
-		this.categorias = categorias;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public List<Curso> getCurso() {

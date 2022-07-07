@@ -1,25 +1,27 @@
-package br.com.castgroup.cursos.dto;
+package br.com.castgroup.cursos.controller.form;
 
 import java.time.LocalDate;
 
 import br.com.castgroup.cursos.entities.Categoria;
-import br.com.castgroup.cursos.entities.Curso;
 
-public class CursoDTO {
+public class AtualizacaoCursoForm {
+
 
 	private Integer idCurso;
 	private String descricao;
 	private LocalDate dataInicio;
 	private LocalDate dataTermino;
 	private Integer qtdAlunos;
-	private String categoria;
+	private Categoria categoria;
 
-	public CursoDTO() {
+	public AtualizacaoCursoForm() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public CursoDTO(Integer idCurso, String descricao, LocalDate dataInicio, LocalDate dataTermino, Integer qtdAlunos,
-			String categoria) {
+	public AtualizacaoCursoForm(Integer idCurso, String descricao, LocalDate dataInicio, LocalDate dataTermino,
+			Integer qtdAlunos, Categoria categoria) {
 		super();
 		this.idCurso = idCurso;
 		this.descricao = descricao;
@@ -28,6 +30,8 @@ public class CursoDTO {
 		this.qtdAlunos = qtdAlunos;
 		this.categoria = categoria;
 	}
+
+
 
 	public Integer getIdCurso() {
 		return idCurso;
@@ -69,17 +73,16 @@ public class CursoDTO {
 		this.qtdAlunos = qtdAlunos;
 	}
 
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	
 	
+
 	
-	
-	
-	
+
 }

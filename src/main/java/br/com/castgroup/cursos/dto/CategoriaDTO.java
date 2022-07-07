@@ -6,7 +6,7 @@ public class CategoriaDTO {
 	
 
 	private Integer idCategoria;
-	private String categorias;
+	private String categoria;
 	
 	public CategoriaDTO() {
 		// TODO Auto-generated constructor stub
@@ -14,7 +14,7 @@ public class CategoriaDTO {
 
 	public CategoriaDTO(Categoria categoria) {
 		this.idCategoria = categoria.getIdCategoria();
-		this.categorias = categoria.getCategorias();
+		this.categoria = categoria.getCategoria();
 	}
 
 	public Integer getIdCategoria() {
@@ -25,13 +25,14 @@ public class CategoriaDTO {
 		this.idCategoria = idCategoria;
 	}
 
-	public String getCategorias() {
-		return categorias;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCategorias(String categorias) {
-		this.categorias = categorias;
+	public void setCategoria(String categoria) {
 	}
+	
+
 	
 	
 }

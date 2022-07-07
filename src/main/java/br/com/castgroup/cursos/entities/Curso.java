@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_curso")
@@ -22,8 +23,8 @@ public class Curso {
 	private LocalDate dataTermino;
 	private Integer qtdAlunos;
 
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "fk_categoria")
 	private Categoria categoria;
 
 	public Curso() {
@@ -37,6 +38,18 @@ public class Curso {
 		this.descricao = descricao;
 		this.dataInicio = dataInicio;
 		this.dataTermino = dataTermino;
+		this.qtdAlunos = qtdAlunos;
+		this.categoria = categoria;
+	}
+	
+	
+	
+
+	public Curso(String descricao, Integer qtdAlunos,
+			Categoria categoria) {
+		super();
+		this.descricao = descricao;
+		
 		this.qtdAlunos = qtdAlunos;
 		this.categoria = categoria;
 	}
