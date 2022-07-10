@@ -1,0 +1,86 @@
+2022-07-09 14:56:47,304 INFO br.com.castgroup.cursos.CursosApplication [main] Iniciando a API de Curso
+2022-07-09 14:56:47,475 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Iniciando a API de Curso
+2022-07-09 14:56:47,817 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Starting CursosApplication using Java 11.0.15 on DESKTOP-BSMES7T with PID 1236 (C:\Users\Brenno\Downloads\cursos (1)\cursos\target\classes started by Brenno in C:\Users\Brenno\Downloads\cursos (1)\cursos)
+2022-07-09 14:56:47,818 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-07-09 14:56:47,863 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-07-09 14:56:47,864 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-07-09 14:56:48,412 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-09 14:56:48,466 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 46 ms. Found 2 JPA repository interfaces.
+2022-07-09 14:56:49,088 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-07-09 14:56:49,101 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-07-09 14:56:49,101 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-07-09 14:56:49,102 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-09 14:56:49,190 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-07-09 14:56:49,190 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1326 ms
+2022-07-09 14:56:49,378 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-09 14:56:49,431 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-09 14:56:49,599 INFO org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-09 14:56:49,694 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-07-09 14:56:49,985 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-07-09 14:56:50,001 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-09 14:56:50,612 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-09 14:56:50,621 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-09 14:56:50,958 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-09 14:56:51,311 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-07-09 14:56:51,322 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-07-09 14:56:51,346 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-09 14:56:51,356 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Started CursosApplication in 3.874 seconds (JVM running for 4.423)
+2022-07-09 14:56:51,360 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] API de cadaastro de pessoas iniciada e pronta para recebe requisições
+2022-07-09 14:57:05,030 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-09 14:57:05,034 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2022-07-09 14:57:05,043 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2022-07-09 14:57:05,080 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Iniciando a API de Curso
+2022-07-09 14:57:05,115 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Starting CursosApplication using Java 11.0.15 on DESKTOP-BSMES7T with PID 1236 (C:\Users\Brenno\Downloads\cursos (1)\cursos\target\classes started by Brenno in C:\Users\Brenno\Downloads\cursos (1)\cursos)
+2022-07-09 14:57:05,115 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-07-09 14:57:05,276 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-09 14:57:05,287 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 11 ms. Found 2 JPA repository interfaces.
+2022-07-09 14:57:05,357 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-07-09 14:57:05,357 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-07-09 14:57:05,358 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-07-09 14:57:05,358 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-09 14:57:05,380 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-07-09 14:57:05,380 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 262 ms
+2022-07-09 14:57:05,405 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-09 14:57:05,410 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2022-07-09 14:57:05,430 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2022-07-09 14:57:05,431 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-09 14:57:05,477 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-09 14:57:05,477 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-09 14:57:05,541 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-09 14:57:05,649 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-07-09 14:57:05,654 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-07-09 14:57:05,657 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-09 14:57:05,660 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Started CursosApplication in 0.576 seconds (JVM running for 18.728)
+2022-07-09 14:57:05,662 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-07-09 14:57:05,663 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] API de cadaastro de pessoas iniciada e pronta para recebe requisições
+2022-07-09 14:58:18,663 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-09 14:58:18,664 INFO com.zaxxer.hikari.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
+2022-07-09 14:58:18,671 INFO com.zaxxer.hikari.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
+2022-07-09 14:58:18,703 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Iniciando a API de Curso
+2022-07-09 14:58:18,735 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Starting CursosApplication using Java 11.0.15 on DESKTOP-BSMES7T with PID 1236 (C:\Users\Brenno\Downloads\cursos (1)\cursos\target\classes started by Brenno in C:\Users\Brenno\Downloads\cursos (1)\cursos)
+2022-07-09 14:58:18,735 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-07-09 14:58:18,868 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-09 14:58:18,881 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 12 ms. Found 2 JPA repository interfaces.
+2022-07-09 14:58:18,952 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-07-09 14:58:18,953 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-07-09 14:58:18,953 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-07-09 14:58:18,953 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-09 14:58:18,980 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-07-09 14:58:18,980 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 242 ms
+2022-07-09 14:58:19,006 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-09 14:58:19,013 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2022-07-09 14:58:19,035 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2022-07-09 14:58:19,035 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-09 14:58:19,091 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-09 14:58:19,091 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-09 14:58:19,152 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-09 14:58:19,239 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-07-09 14:58:19,242 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-07-09 14:58:19,245 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-09 14:58:19,247 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Started CursosApplication in 0.539 seconds (JVM running for 92.315)
+2022-07-09 14:58:19,249 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-07-09 14:58:19,249 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] API de cadaastro de pessoas iniciada e pronta para recebe requisições
+2022-07-09 14:59:18,950 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-09 14:59:18,951 INFO com.zaxxer.hikari.HikariDataSource [Thread-11] HikariPool-3 - Shutdown initiated...
+2022-07-09 14:59:18,960 INFO com.zaxxer.hikari.HikariDataSource [Thread-11] HikariPool-3 - Shutdown completed.
+2022-07-09 14:59:18,996 INFO br.com.castgroup.cursos.CursosApplication [restartedMain] Iniciando a API de Curso
