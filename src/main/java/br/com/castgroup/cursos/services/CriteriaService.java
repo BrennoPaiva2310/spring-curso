@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 
 import br.com.castgroup.cursos.entities.Curso;
 @Service
-public class CriteriaService {
+public  class CriteriaService {
 	
 
 	@PersistenceContext
-	private  EntityManager em;
+	 private  EntityManager em;
 	
 	public  List<Curso> criteria(String descricao, LocalDate dataInicio, LocalDate dataTermino) {
 		CriteriaBuilder criteria = em.getCriteriaBuilder();

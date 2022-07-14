@@ -28,10 +28,10 @@ public class SwaggerConfiguration {
 				.build().apiInfo(apiInfo());
 	}	
 	 private ApiInfo apiInfo() {
-	        return new ApiInfo("API para controle de Registro de medicos","Sistema de API desenvolvido em SpringBoot com Hibernate e JPA pelo Brenno de PAIVA",
+	        return new ApiInfo("API para controle de Registro de Cursos","Sistema de API desenvolvido em SpringBoot com Hibernate e JPA pelo Brenno de PAIVA",
 	                "Versão 1.0",
 	                "http://castgroup.com.br/",
-	                new Contact("Hospital Cast Fruncionarios", "http://castgroup.com.br/", "contato@castgroup.com.br"),
+	                new Contact("Escola Estudando", "http://castgroup.com.br/", "contato@castgroup.com.br"),
 	                "Licença da API",
 	                "http://www.castgroup.com.br/",
 	                Collections.emptyList());

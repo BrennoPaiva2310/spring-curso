@@ -3,7 +3,6 @@ package br.com.castgroup.cursos.controller;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -19,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.castgroup.cursos.CursosApplication;
-import br.com.castgroup.cursos.dto.CursoDTO;
 import br.com.castgroup.cursos.entities.Curso;
-import br.com.castgroup.cursos.form.CursoForm;
 import br.com.castgroup.cursos.services.CursoService;
 
 @RestController
@@ -40,13 +36,13 @@ public class CursoController {
 	// https://stackoverflow.com/questions/39784344/check-date-between-two-other-dates-spring-data-jpa
 	// https://www.baeldung.com/spring-data-derived-queries
 	// https://thorben-janssen.com/ultimate-guide-derived-queries-with-spring-data-jpa/
-	//https://medium.com/@rodrigoventuri123/auditoria-com-spring-data-jpa-fbb54c4b443e
-	//https://stackoverflow.com/questions/39784344/check-date-between-two-other-dates-spring-data-jpa
-	//https://consolelog.com.br/formatar-data-datepipe-angular/
-	//https://www.baeldung.com/spring-data-criteria-queries
-	//https://www.guj.com.br/t/como-fazer-refresh-na-tela-usando-angular/374418/2
-	
-	
+	// https://medium.com/@rodrigoventuri123/auditoria-com-spring-data-jpa-fbb54c4b443e
+	// https://stackoverflow.com/questions/39784344/check-date-between-two-other-dates-spring-data-jpa
+	// https://consolelog.com.br/formatar-data-datepipe-angular/
+	// https://www.baeldung.com/spring-data-criteria-queries
+	// https://www.guj.com.br/t/como-fazer-refresh-na-tela-usando-angular/374418/2
+	// https://stackoverflow.com/questions/51200708/not-equals-condition-when-using-spring-crudrepository
+
 	@Autowired
 	CursoService service;
 
@@ -54,40 +50,28 @@ public class CursoController {
 	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<String> insert(@RequestBody Curso curso) {
-		try {
-			
-			service.cadastrar(curso);
-			return ResponseEntity.ok().body("Curso cadastrado com sucesso");
 
-		} catch (Exception e) {
-
-			return ResponseEntity.internalServerError().body("Erro: " + e.getMessage());
-
-		}
+		service.cadastrar(curso);
+		return ResponseEntity.ok().body("Curso cadastrado com sucesso");
 
 	}
 
 	@CrossOrigin
-    @GetMapping
-    public ResponseEntity<List<Curso>> buscar(@RequestParam(required = false)String descricao,
-            @RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataInicio, @RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataTermino) {
-        List<Curso> curso = service.consultar(descricao, dataInicio, dataTermino);
-        
-        return ResponseEntity.ok().body(curso);
-    }
+	@GetMapping
+	public ResponseEntity<List<Curso>> buscar(@RequestParam(required = false) String descricao,
+			@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
+			@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataTermino) {
+		List<Curso> curso = service.consultar(descricao, dataInicio, dataTermino);
+
+		return ResponseEntity.ok().body(curso);
+	}
 
 	// Metodo de get por id
 	@CrossOrigin
 	@GetMapping("/{idCurso}")
 	public ResponseEntity<?> listarId(@PathVariable("idCurso") Integer idCurso) {
 
-		try {
-			return ResponseEntity.ok().body(service.consultarPorId(idCurso));
-
-		} catch (Exception e) {
-
-			return ResponseEntity.internalServerError().body("Erro :" + e.getMessage());
-		}
+		return ResponseEntity.ok().body(service.consultarPorId(idCurso));
 
 	}
 
@@ -95,34 +79,20 @@ public class CursoController {
 	@CrossOrigin
 	@DeleteMapping(value = "/{idCurso}")
 	public ResponseEntity<String> delete(@PathVariable("idCurso") Integer idCurso) {
-		try {
-			System.out.println(idCurso);
-			service.deleta(idCurso);
-			return ResponseEntity.ok().body("Curso excluido com ducesso");
 
-		} catch (Exception e) {
-			return ResponseEntity.badRequest().body("Erro : " + e.getMessage());
-		}
+		service.deleta(idCurso);
+		return ResponseEntity.ok().body("Curso excluido com ducesso");
 
 	}
-
-
-
 
 	// Metodo de Editar
 	@CrossOrigin
 	@PutMapping(value = "/editar")
 	public ResponseEntity<String> update(@RequestBody Curso curso) {
-		try {
-			service.editar( curso);
-			return ResponseEntity.status(HttpStatus.OK).body("Curso Editado");
 
-		} catch (
+		service.editar(curso);
+		return ResponseEntity.status(HttpStatus.OK).body("Curso Editado");
 
-		Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro :" + e.getMessage());
-
-		}
 	}
 
 }
