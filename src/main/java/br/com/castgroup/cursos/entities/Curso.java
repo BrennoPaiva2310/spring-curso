@@ -10,15 +10,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "tb_curso")
-public class Curso {
+public class Curso extends AbstractAuditingEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCurso;
 	private String descricao;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataInicio;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataTermino;
 	private Integer qtdAlunos;
 

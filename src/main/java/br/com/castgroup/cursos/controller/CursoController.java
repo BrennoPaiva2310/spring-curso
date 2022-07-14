@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.castgroup.cursos.CursosApplication;
 import br.com.castgroup.cursos.dto.CursoDTO;
 import br.com.castgroup.cursos.entities.Curso;
+import br.com.castgroup.cursos.form.CursoForm;
 import br.com.castgroup.cursos.services.CursoService;
 
 @RestController
@@ -38,7 +40,13 @@ public class CursoController {
 	// https://stackoverflow.com/questions/39784344/check-date-between-two-other-dates-spring-data-jpa
 	// https://www.baeldung.com/spring-data-derived-queries
 	// https://thorben-janssen.com/ultimate-guide-derived-queries-with-spring-data-jpa/
-
+	//https://medium.com/@rodrigoventuri123/auditoria-com-spring-data-jpa-fbb54c4b443e
+	//https://stackoverflow.com/questions/39784344/check-date-between-two-other-dates-spring-data-jpa
+	//https://consolelog.com.br/formatar-data-datepipe-angular/
+	//https://www.baeldung.com/spring-data-criteria-queries
+	//https://www.guj.com.br/t/como-fazer-refresh-na-tela-usando-angular/374418/2
+	
+	
 	@Autowired
 	CursoService service;
 
@@ -46,8 +54,8 @@ public class CursoController {
 	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<String> insert(@RequestBody Curso curso) {
-
 		try {
+			
 			service.cadastrar(curso);
 			return ResponseEntity.ok().body("Curso cadastrado com sucesso");
 
@@ -59,15 +67,14 @@ public class CursoController {
 
 	}
 
-	// Metodo de Get
 	@CrossOrigin
-	@GetMapping
-	public ResponseEntity<List<CursoDTO>> buscar() {
-
-		List<CursoDTO> curso = service.consultar();
-
-		return ResponseEntity.ok().body(curso);
-	}
+    @GetMapping
+    public ResponseEntity<List<Curso>> buscar(@RequestParam(required = false)String descricao,
+            @RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataInicio, @RequestParam(required = false)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataTermino) {
+        List<Curso> curso = service.consultar(descricao, dataInicio, dataTermino);
+        
+        return ResponseEntity.ok().body(curso);
+    }
 
 	// Metodo de get por id
 	@CrossOrigin
@@ -89,6 +96,7 @@ public class CursoController {
 	@DeleteMapping(value = "/{idCurso}")
 	public ResponseEntity<String> delete(@PathVariable("idCurso") Integer idCurso) {
 		try {
+			System.out.println(idCurso);
 			service.deleta(idCurso);
 			return ResponseEntity.ok().body("Curso excluido com ducesso");
 
@@ -98,45 +106,15 @@ public class CursoController {
 
 	}
 
-	// Metodo de pesquisa por descrição
-	@CrossOrigin
-	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<Object> buscarPorDescricao(@PathVariable("descricao") String descricao) {
 
-		try {
 
-			return ResponseEntity.ok().body(service.consultarPorDescricao(descricao));
-
-		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body("Erro :" + e.getMessage());
-		}
-
-	}
-
-	// Metodo de pesquisa por intervalo de datas
-	@CrossOrigin
-	@GetMapping(value = "/periodo/{dataInicio}/{dataTermino}")
-	public ResponseEntity<?> listarData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicio,
-			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataTermino) {
-
-		try {
-
-			return ResponseEntity.ok().body(service.consultarPorData(dataInicio, dataTermino));
-
-		} catch (Exception e) {
-			return ResponseEntity.internalServerError().body("Erro :" + e.getMessage());
-		}
-
-	}
 
 	// Metodo de Editar
 	@CrossOrigin
 	@PutMapping(value = "/editar")
 	public ResponseEntity<String> update(@RequestBody Curso curso) {
 		try {
-			Integer item = curso.getIdCurso();
-			service.editar(item, curso);
-
+			service.editar( curso);
 			return ResponseEntity.status(HttpStatus.OK).body("Curso Editado");
 
 		} catch (

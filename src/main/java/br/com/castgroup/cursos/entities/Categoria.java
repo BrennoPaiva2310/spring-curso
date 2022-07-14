@@ -24,6 +24,12 @@ public class Categoria {
 		this.idCategoria = idCategoria;
 		this.categoria = categoria;
 	}
+	
+
+	public Categoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
 
 
 	public Categoria() {

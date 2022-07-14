@@ -1,20 +1,21 @@
-package br.com.castgroup.cursos.dto;
+package br.com.castgroup.cursos.form;
 
-public class CursoDTO {
-
+public class CursoAtualizacaoForm {
+	
 	private Integer idCurso;
 	private String descricao;
 	private String dataInicio;
 	private String dataTermino;
-	private Integer qtdAlunos;
-	private String categoria;
+	private String qtdAlunos;
 
-	public CursoDTO() {
+	private Integer categoria;
+	
+	public CursoAtualizacaoForm() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CursoDTO(Integer idCurso, String descricao, String dataInicio, String dataTermino, Integer qtdAlunos,
-			String categoria) {
+	public CursoAtualizacaoForm(Integer idCurso, String descricao, String dataInicio, String dataTermino, String qtdAlunos,
+			Integer categoria) {
 		super();
 		this.idCurso = idCurso;
 		this.descricao = descricao;
@@ -56,21 +57,21 @@ public class CursoDTO {
 		this.dataTermino = dataTermino;
 	}
 
-	public Integer getQtdAlunos() {
+	public String getQtdAlunos() {
 		return qtdAlunos;
 	}
 
-	public void setQtdAlunos(Integer qtdAlunos) {
+	public void setQtdAlunos(String qtdAlunos) {
 		this.qtdAlunos = qtdAlunos;
 	}
 
-	public String getCategoria() {
+	public Integer getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Integer categoria) {
 		this.categoria = categoria;
 	}
 
-	
+
 }
