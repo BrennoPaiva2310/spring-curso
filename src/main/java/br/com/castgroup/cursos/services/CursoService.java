@@ -20,12 +20,12 @@ public class CursoService {
 	@Autowired
 	CursoRepository repository;
 
-	@PersistenceContext
-	EntityManager em;
-
 	@Autowired
 	CriteriaService criteria;
 
+	
+//------------------------------------------------------------------------------------------------------------------------------------
+	
 	// SERVICO DE CADASTRAR
 	public void cadastrar(Curso curso) {
 		verificarCursoExiste(curso);
@@ -35,20 +35,19 @@ public class CursoService {
 		repository.save(curso);
 
 	}
-	
-	//SERVICO DE CONSULTAR TUDO
+
+	// SERVICO DE CONSULTAR TUDO
 	public List<Curso> consultar(String descricao, LocalDate dataInicio, LocalDate dataTermino) {
 
 		return criteria.criteria(descricao, dataInicio, dataTermino);
 	}
-	
-	
-	//SERVICO DE CONSULTAR POR ID
+
+	// SERVICO DE CONSULTAR POR ID
 	public Optional<Curso> consultarPorId(Integer id) {
 		Optional<Curso> listCurso = repository.findById(id);
 
 		if (listCurso.isEmpty()) {
-			throw new Exceptions("Curso Inexistente");
+			throw new Exceptions("Curso Inexistente.");
 
 		}
 
@@ -56,18 +55,15 @@ public class CursoService {
 
 	}
 
-	
-	//SERVICE DE DELETAR
+	// SERVICE DE DELETAR
 	public void deleta(Integer id) {
 		verificarId(id);
 		verificarDataExclusao(repository.findById(id));
 
 		repository.deleteById(id);
 	}
-	
-	
-	
-	//SERVICE DE EDITAR
+
+	// SERVICE DE EDITAR
 	public void editar(Curso curso) {
 
 		Integer count = repository.contPesquisa(curso.getDataInicio(), curso.getDataTermino(), curso.getIdCurso());
@@ -81,8 +77,9 @@ public class CursoService {
 		repository.save(curso);
 
 	}
-	
 
+//----------------------------------------------------------------------------------------------------------------------------------
+	
 	// VALIDAÇÃO DO PERIODO DE DATAS
 	public void validarDataCadastro(LocalDate dataInicio, LocalDate dataTermino) {
 
@@ -103,11 +100,8 @@ public class CursoService {
 		}
 
 	}
-
 	
-
-
-
+//---------------------------------------------------------------------------------------------------------------------------------------	
 
 	// VERIFICAÇÕES PARA VER SE O CURSO TERMINOU
 	public void verificarDataExclusao(Optional<Curso> curso) {
@@ -115,39 +109,37 @@ public class CursoService {
 		Curso item = curso.get();
 
 		if (item.getDataTermino().isBefore(LocalDate.now())) {
-			throw new  Exceptions("Data antes da atual");
+			throw new Exceptions("Curso terminado.");
 		}
 	}
 
-	
-	//VERIFICAR SE O CURSO EXISTE
+	// VERIFICAR SE O CURSO EXISTE
 	public void verificarCursoExiste(Curso curso) {
 
 		if (repository.countByDescricao(curso.getDescricao()) != 0) {
-			throw new Exceptions("Curso Existente");
+			throw new Exceptions("Curso Existente.");
 		}
 
 	}
 
-	//VERIFICAR SE O CURSO EXISTE DO EDITAR
+	// VERIFICAR SE O CURSO EXISTE DO EDITAR
 	public void verificarCursoExisteEditar(Curso curso) {
 		Integer i = repository.countByDescricaoAndIdCursoNot(curso.getDescricao(), curso.getIdCurso());
 
 		if (i != 0) {
-			throw new Exceptions("Curso Existente");
+			throw new Exceptions("Curso Existente.");
 		}
 
 	}
 
-	//VERIFICAR O ID
+	// VERIFICAR O ID
 	public void verificarId(Integer id) {
 
 		Optional<Curso> curso = repository.findById(id);
 		if (curso.isEmpty()) {
-			throw new Exceptions("Curso Inexistente");
+			throw new Exceptions("Curso Inexistente.");
 
 		}
 	}
 
-	
 }

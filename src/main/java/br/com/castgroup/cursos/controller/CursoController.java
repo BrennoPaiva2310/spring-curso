@@ -55,7 +55,8 @@ public class CursoController {
 		return ResponseEntity.ok().body("Curso cadastrado com sucesso");
 
 	}
-
+	
+	//Metodo de Get
 	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Curso>> buscar(@RequestParam(required = false) String descricao,
@@ -81,7 +82,7 @@ public class CursoController {
 	public ResponseEntity<String> delete(@PathVariable("idCurso") Integer idCurso) {
 
 		service.deleta(idCurso);
-		return ResponseEntity.ok().body("Curso excluido com ducesso");
+		return ResponseEntity.ok().body("Curso excluido com sucesso");
 
 	}
 

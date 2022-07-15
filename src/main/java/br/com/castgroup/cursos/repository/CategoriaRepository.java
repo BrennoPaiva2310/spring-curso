@@ -8,6 +8,6 @@ import br.com.castgroup.cursos.entities.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
 
-	Categoria findByCategoria(String categoria);
+	
 
 }
